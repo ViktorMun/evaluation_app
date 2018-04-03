@@ -1,6 +1,8 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne,  } from 'typeorm'
 import { BaseEntity } from 'typeorm/repository/BaseEntity'
-import { IsString, IsBoolean, IsDate } from 'class-validator'
+import { Exclude } from 'class-transformer'
+import { MinLength, IsEmail, IsString, IsBoolean, IsDate } from 'class-validator'
+import * as bcrypt from 'bcrypt'
 
 
 @Entity()
@@ -78,5 +80,25 @@ export class Teacher extends BaseEntity {
   @IsString()
   @Column('text', { nullable: false })
   name: string;
+
+  @IsEmail()
+    @Column('text')
+    email: string
+
+    @IsString()
+    @MinLength(6)
+    @Column('text')
+    @Exclude({ toPlainOnly: true })
+  password: string
+
+
+  async setPassword(rawPassword: string) {
+    const hash = await bcrypt.hash(rawPassword, 10)
+    this.password = hash
+}
+
+checkPassword(rawPassword: string): Promise<boolean> {
+    return bcrypt.compare(rawPassword, this.password)
+  }
 
 }
