@@ -22,7 +22,7 @@ export default class evaluationController {
 
 
 //
-// POST
+// POST when new group
 //
   @Post("/groups")
   @HttpCode(201)
@@ -50,6 +50,56 @@ export default class evaluationController {
           date: group.student[i].day[j].date
         }).save();
       }
+  }
+}
+
+
+@Patch('/groups')
+@HttpCode(201)
+async updateGroup(
+  @Body() updates : Group
+) {
+  const group = await Group.findOneById(updates.id)
+  if (!group) throw new NotFoundError(`Group does not exist!`)
+  await Group.merge(group, updates).save()
+
+  const allStudents= await Promise.all(updates.student.map(async student => {
+    if (student.id === undefined) {
+      const entity = await Student.create({
+          group: group,
+          name: student.name,
+          picture: student.picture
+        }).save()
+       await student.day.map(async day => {
+          await Day.create({
+          student: entity,
+          colour: day.colour,
+          date: day.date
+        }).save()
+      })
+      }
+    else {
+      let sStudent = await Student.findOneById(student.id)
+      let studentMerge = await Student.merge(sStudent, student).save()
+    }
+
+  const alldays = await Promise.all(student.day.map(async day => {
+      if (day.id === undefined) {
+        await Day.create({
+          student: student,
+          colour: day.colour,
+          date: day.date
+        }).save()
+    }
+    else {
+        let sStudent = await Day.findOneById(day.id)
+         let studentMerge = await Student.merge(sStudent, day).save()
+      }
+    }))
+  }))
+
+  return {
+    message: 'You successfully changed group'
   }
 }
 }

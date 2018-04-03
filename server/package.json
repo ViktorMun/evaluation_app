@@ -5,10 +5,12 @@
   "author": "Viktor Mun <v.mun@yahoo.com>",
   "license": "MIT",
   "dependencies": {
+    "@types/express": "^4.11.1",
     "@types/koa": "^2.0.44",
     "@types/koa-bodyparser": "^4.2.0",
     "@types/koa-multer": "^1.0.0",
     "@types/koa-router": "^7.0.27",
+    "express": "^4.16.3",
     "kcors": "^2.2.1",
     "koa": "^2.5.0",
     "koa-bodyparser": "^4.2.0",
