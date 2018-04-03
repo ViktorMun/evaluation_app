@@ -102,4 +102,32 @@ async updateGroup(
     message: 'You successfully changed group'
   }
 }
+
+@Delete('/groups/:id([0-9]+)')
+@HttpCode(204)
+async deleteGroup(
+  @Param('id') id: number,
+  ) {
+  const group = await Group.findOneById(id)
+  if (!group) throw new NotFoundError(`Group does not exist!`)
+  await group.remove()
+
+  return {
+    message: "You succesfully deleted group"
+  }
+}
+
+@Delete('/students/:id([0-9]+)')
+@HttpCode(204)
+async deleteStudent(
+  @Param('id') id: number,
+  ) {
+  const student = await Student.findOneById(id)
+  if (!student) throw new NotFoundError(`Student does not exist!`)
+  await student.remove()
+
+  return {
+    message: "You succesfully deleted student"
+  }
+}
 }
