@@ -20,14 +20,14 @@ import * as request from 'superagent'
 @JsonController()
 export default class evaluationController {
 
-  @Authorized()
+  // @Authorized()
   @Get('/groups')
   @HttpCode(200)
   getGroups() {
-    return Group.find()
+  return Group.find()
   }
 
-  @Authorized()
+  //@Authorized()
   @Get('/groups/:id([0-9]+)')
   @HttpCode(200)
   getGroup(
@@ -37,10 +37,23 @@ export default class evaluationController {
   }
 
 
+// getallStudents by ID
+  @Get('/groups/:id([0-9]+)/students')
+  @HttpCode(200)
+  async getGroupSt(
+    @Param('id') groupId: number
+  ) {
+    const group:any = await Group.findOneById(groupId)
+
+    return group.student
+
+  }
+
+
   //
   // POST when new group
   //
-  @Authorized()
+  //@Authorized()
   @Post("/groups")
   @HttpCode(201)
   async create(

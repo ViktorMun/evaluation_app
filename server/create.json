@@ -1,5 +1,5 @@
 {
-  "name": "Group11",
+  "name": "Group13",
   "start": "2018-02-02",
   "end": "2018-04-04",
   "student": [
@@ -47,27 +47,95 @@
               }
           ]
       },
+
       {
-          "name": "SE",
+          "name": "OD",
           "picture": "http://picture",
           "day": [
-              {
-                 "colour": "Red",
-                  "date": "2018-04-04"
-              },
-              {
-                 "colour": "Yellow",
-                  "date": "2018-04-04"
-              },
               {
                   "colour": "Green",
                   "date": "2018-04-04"
               },
               {
+                  "colour": "Red",
+                  "date": "2018-04-04"
+              },
+              {
                   "colour": "Yellow",
+                  "date": "2018-04-04"
+              },
+              {
+                  "colour": "Red",
+                  "date": "2018-04-04"
+              }
+          ]
+      },
+      {
+          "name": "OD",
+          "picture": "http://picture",
+          "day": [
+              {
+                  "colour": "Green",
+                  "date": "2018-04-04"
+              },
+              {
+                  "colour": "Red",
+                  "date": "2018-04-04"
+              },
+              {
+                  "colour": "Yellow",
+                  "date": "2018-04-04"
+              },
+              {
+                  "colour": "Red",
+                  "date": "2018-04-04"
+              }
+          ]
+      },
+      {
+          "name": "OD",
+          "picture": "http://picture",
+          "day": [
+              {
+                  "colour": "Green",
+                  "date": "2018-04-04"
+              },
+              {
+                  "colour": "Red",
+                  "date": "2018-04-04"
+              },
+              {
+                  "colour": "Yellow",
+                  "date": "2018-04-04"
+              },
+              {
+                  "colour": "Red",
+                  "date": "2018-04-04"
+              }
+          ]
+      },
+      {
+          "name": "OD",
+          "picture": "http://picture",
+          "day": [
+              {
+                  "colour": "Green",
+                  "date": "2018-04-04"
+              },
+              {
+                  "colour": "Red",
+                  "date": "2018-04-04"
+              },
+              {
+                  "colour": "Yellow",
+                  "date": "2018-04-04"
+              },
+              {
+                  "colour": "Red",
                   "date": "2018-04-04"
               }
           ]
       }
+
   ]
-} 
+}
