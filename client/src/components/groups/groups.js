@@ -3,7 +3,7 @@ import './groups.css'
 import {getGroups, addGroup} from '../../actions/actions'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import ProductForm from './createGroup'
+import AddGroup from './createGroup'
 
 class GroupList extends PureComponent {
   state = {}
@@ -49,7 +49,7 @@ class GroupList extends PureComponent {
           </div>
         </div>
       )}
-      < ProductForm onSubmit={this.addGroup}/>
+      < AddGroup onSubmit={this.addGroup}/>
       </div>
 
   )

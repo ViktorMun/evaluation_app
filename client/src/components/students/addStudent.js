@@ -1,6 +1,5 @@
 import React, {PureComponent} from 'react'
-
-class AddGroup extends PureComponent {
+class AddStudent extends PureComponent {
 	state = {}
 
 	handleSubmit = (e) => {
@@ -21,23 +20,17 @@ class AddGroup extends PureComponent {
 		return (
 			<form onSubmit={this.handleSubmit}>
 				<div>
-					<label htmlFor="name">Group name</label>
+					<label htmlFor="name">Student name</label>
 					<input name="name" id="name" value={
 						this.state.name || initialValues.name || ''
 					} onChange={ this.handleChange } />
 				</div>
 
-				<div>
-					<label htmlFor="start">Start date</label>
-					<input name="start" id="start" type="date" value={
-						this.state.start || initialValues.start || ''
-					} onChange={ this.handleChange } />
-				</div>
 
 				<div>
-					<label htmlFor="end">End date</label>
-					<input name="end" id="enddate" type="date"  value={
-						this.state.end || initialValues.end || ''
+					<label htmlFor="picture">URL photo</label>
+					<input name="picture" id="picture" type="text"  value={
+						this.state.picture || initialValues.picture || ''
 					} onChange={ this.handleChange } />
 				</div>
 
@@ -48,4 +41,4 @@ class AddGroup extends PureComponent {
 	}
 }
 
-export default AddGroup
+export default AddStudent

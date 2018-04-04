@@ -5,6 +5,9 @@ export const SHOW_GROUPS = 'SHOW_GROUPS'
 export const ADD_GROUP = 'ADD_GROUP'
 export const GET_STUDENTS = 'GET_STUDENTS'
 export const GET_ONE_STUDENT = 'GET_ONE_STUDENT'
+export const ADD_STUDENT   = 'ADD_STUDENT'
+export const DELETE_STUDENT   = 'DELETE_STUDENT'
+export const CHANGE_STUDENT = 'CHANGE_STUDENT'
 
 export const getGroups = () => (dispatch, getState) => {console.log("work")
   const state = getState()
@@ -59,6 +62,52 @@ export const getOneStudent = (id) => (dispatch, getState) => {
     .then(result => {
       dispatch({
         type: GET_ONE_STUDENT,
+        payload: result.body
+      })
+    })
+    .catch(err => console.error(err))
+}
+
+export const addStudent = (id, student) => (dispatch, getState) => {
+  console.log(student)
+  const state = getState()
+  request
+    .post(`${baseUrl}/groups/${id}/students`)
+    .send(student)
+    .then(result => {
+      dispatch({
+        type: ADD_STUDENT,
+        payload: result.body
+      })
+    })
+    .catch(err => console.error(err))
+}
+
+export const deleteStudent = (id, student) => (dispatch, getState) => {
+
+  const state = getState()
+  request
+    .delete(`${baseUrl}/students/${id}`)
+    .send(student)
+    .then(result => {
+      dispatch({
+        type: DELETE_STUDENT,
+        payload: result.body
+      })
+    })
+    .catch(err => console.error(err))
+}
+
+export const changeStudent = (id, student) => (dispatch, getState) => {
+  console.log("student")
+  console.log(student)
+  const state = getState()
+  request
+    .patch(`${baseUrl}/student/${id}`)
+    .send(student)
+    .then(result => {
+      dispatch({
+        type: CHANGE_STUDENT,
         payload: result.body
       })
     })
