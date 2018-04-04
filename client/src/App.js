@@ -4,7 +4,8 @@ import NavBar from './components/NavBar'
 import LoginPage from './components/login/LoginPage'
 import LogoutPage from './components/logout/LogoutPage'
 import groups from './components/groups/groups'
-
+import students from './components/students/students'
+import oneStudent from './components/oneStudent/oneStudent'
 import './App.css';
 
 class App extends Component {
@@ -13,10 +14,12 @@ class App extends Component {
       <Router>
         <div className='App'>
           <NavBar/>
+          <Route exact path="/" component={groups} />
+          <Route exact path="/groups" component={groups} />
+          <Route exact path="/students/:id" component={students} />
+          <Route exact path="/:id" component={oneStudent} />
           <Route exact path="/login" component={LoginPage} />
           <Route exact path="/logout" component={LogoutPage} />
-          <Route exact path="/groups" component={groups} />
-          <Route exact path="/" render={ () => <Redirect to="/groups" /> } />
         </div>
       </Router>
     )

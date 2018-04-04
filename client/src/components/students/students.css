@@ -1,0 +1,31 @@
+
+    .img-container {
+  position: relative;
+  display: inline-block;
+  width: 40%;
+  height: 0;
+  padding: 10% 0;
+  border-radius: 100%;
+  /* Just making it pretty */
+  @shadow: rgba(0, 0, 0, .1);
+  @shadow-length: 4px;
+  -webkit-box-shadow: 0 @shadow-length 0 0 @shadow;
+          box-shadow: 0 @shadow-length 0 0 @shadow;
+  text-shadow: 0 @shadow-length 0 @shadow;
+  background: #FA8072;
+  color: white;
+  font-family: Helvetica, Arial Black, sans;
+  font-size: 20px;
+  text-align: center;
+}
+
+.img-container {
+    background-size: cover;
+    width: 200px;
+    height: 80px;
+    overflow: hidden;
+}
+.img-container img {
+    width: 25%;
+    height: 20%;
+}

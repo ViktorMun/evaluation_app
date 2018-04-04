@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "material-ui": "^1.0.0-beta.40",
     "materialize-css": "^1.0.0-beta",
     "prop-types": "^15.6.1",
     "react": "^16.2.0",
