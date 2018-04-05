@@ -58,13 +58,17 @@ export class Day extends BaseEntity {
   @PrimaryGeneratedColumn()
   id?: number
 
-  @IsBoolean()
-  @Column('text', {nullable: true})
+  @IsString()
+  @Column('text', {nullable: false})
   colour: string;
 
-  @IsDate()
-  @Column('date', { nullable: true})
+  @IsString()
+  @Column('text', { nullable: true})
   date: Date;
+
+  @IsString()
+  @Column('text', { nullable: true})
+  text: string
 
   @ManyToOne(_ => Student, student => student.day,{onDelete: "CASCADE"})
   student: Student

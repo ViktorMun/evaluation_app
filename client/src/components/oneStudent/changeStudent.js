@@ -1,4 +1,14 @@
 import React, {PureComponent} from 'react'
+import Paper from 'material-ui/Paper'
+
+const style = {
+  height: 200,
+  width: 350,
+  margin: 20,
+  textAlign: 'left',
+  display: 'inline-block',
+
+};
 
 class ChangeStudent extends PureComponent {
   state = {}
@@ -16,7 +26,9 @@ class ChangeStudent extends PureComponent {
 
   render() {
     const initialValues = this.props.initialValues || {}
-    return (<form onSubmit={this.handleSubmit}>
+    return (
+      <Paper className="editor" style={style} elevation={2}>
+      <form onSubmit={this.handleSubmit}>
       <div>
         <label htmlFor="name">Student name</label>
         <input name="name" id="name" value={this.state.name || initialValues.name || ''
@@ -30,7 +42,8 @@ class ChangeStudent extends PureComponent {
       </div>
 
       <button type="submit">Save</button>
-    </form>)
+    </form>
+  </Paper>)
   }
 }
 

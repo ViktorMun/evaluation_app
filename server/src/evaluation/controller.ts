@@ -49,6 +49,64 @@ export default class evaluationController {
 
   }
 
+  @Post('/groups/:id([0-9]+)/students')
+  @HttpCode(200)
+  async addStudents(
+    @Param('id') groupId: number,
+    @Body() student: Student
+  ) {
+    const group:any = await Group.findOneById(groupId)
+    await Student.create ({
+      name: student.name,
+      picture: student.picture,
+      group: group
+    }).save()
+    return "Succesfully added new student"
+
+  }
+
+  @Patch('/student/:id([0-9]+)')
+  @HttpCode(200)
+  async changeStudents(
+    @Param('id') studentId: number,
+    @Body()
+    student: Partial<Student>
+  ) {
+    const stud = await Student.findOneById(studentId)
+    await Student.merge( stud, student).save()
+    return "Succesfully changed new student"
+
+  }
+
+  @Post("/students/:id([0-9]+)/mark")
+   @HttpCode(201)
+   async addMark(
+     @Param('id') id: number,
+     @Body() mark: Day,
+
+   ) {
+    const oneStudent = await Student.findOneById(id)
+    await Day.create({
+      colour:mark.colour,
+      date:mark.date,
+      text:mark.text,
+      student: oneStudent,
+    }).save();
+    return { message:'Successfully inserted mark'}
+}
+
+  // getallStudents by ID
+    @Get('/student/:id([0-9]+)')
+    @HttpCode(200)
+    async getStudent(
+      @Param('id') studentId: number
+    ) {
+      const student:any = await Student.findOneById(studentId)
+
+      return student
+
+    }
+
 
   //
   // POST when new group
@@ -147,7 +205,8 @@ export default class evaluationController {
     }
   }
 
-  @Authorized()
+
+  //@Authorized()
   @Delete('/students/:id([0-9]+)')
   @HttpCode(204)
   async deleteStudent(

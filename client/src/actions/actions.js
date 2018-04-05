@@ -8,6 +8,7 @@ export const GET_ONE_STUDENT = 'GET_ONE_STUDENT'
 export const ADD_STUDENT   = 'ADD_STUDENT'
 export const DELETE_STUDENT   = 'DELETE_STUDENT'
 export const CHANGE_STUDENT = 'CHANGE_STUDENT'
+export const ADD_MARK = 'ADD_MARK'
 
 export const getGroups = () => (dispatch, getState) => {console.log("work")
   const state = getState()
@@ -99,8 +100,7 @@ export const deleteStudent = (id, student) => (dispatch, getState) => {
 }
 
 export const changeStudent = (id, student) => (dispatch, getState) => {
-  console.log("student")
-  console.log(student)
+
   const state = getState()
   request
     .patch(`${baseUrl}/student/${id}`)
@@ -108,6 +108,21 @@ export const changeStudent = (id, student) => (dispatch, getState) => {
     .then(result => {
       dispatch({
         type: CHANGE_STUDENT,
+        payload: result.body
+      })
+    })
+    .catch(err => console.error(err))
+}
+
+export const addMark = (id, mark) => (dispatch, getState) => {
+  console.log(mark)
+  const state = getState()
+  request
+    .post(`${baseUrl}/students/${id}/mark`)
+    .send(mark)
+    .then(result => {
+      dispatch({
+        type: ADD_MARK,
         payload: result.body
       })
     })

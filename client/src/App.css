@@ -76,19 +76,7 @@
   transition: .4s;
 }
 
-input:checked + .slider {
-  background-color: red;
-}
 
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(13px);
-  -ms-transform: translateX(13px);
-  transform: translateX(13px);
-}
 
 .question-form{
   width: 90%;

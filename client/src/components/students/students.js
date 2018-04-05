@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import './students.css'
 import {Link} from 'react-router-dom'
 import AddStudent from './addStudent'
+import Paper from 'material-ui/Paper'
 
 class students extends PureComponent {
   state = {}
@@ -33,22 +34,26 @@ class students extends PureComponent {
 
   render() {
     const students = this.props.students
-
     return (<div className='group-list'>
       <h2>All students</h2>
-      {
+        {
         students && students.map(student => <div class="img-container">
-          <div>{student.name}
+        <img src={student.picture} className="photo"/>
+
+
+            <div>{student.name}
             <div>
-              <img src={student.picture}/>
-              <button onClick={() => this.deleteStudent(student.id)}>Delete</button>
+
+              <button onClick={() => this.deleteStudent(student.id)} class="btn"><i class="fa fa-trash"></i></button>
               <div>
-                <Link to={`/${student.id}`}>Mark</Link>
+                <Link to={`st/${student.id}`}>Mark</Link>
               </div>
             </div>
           </div>
+
         </div>)
       }
+
       < AddStudent onSubmit={this.addStudent}/>
 
     </div>)

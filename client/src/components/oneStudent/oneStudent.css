@@ -37,8 +37,8 @@ h2 {
         width: 10px;
         height: 10px;
         background-color: blue;
-
-        position:absolute; /*it can be fixed too*/
+/*
+        position:absolute; /*it can be fixed too*/ */
         left:0; right:0;
         top:0; bottom:0;
         margin:auto;
@@ -68,3 +68,7 @@ h2 {
   font-size: 20px;
   text-align: center;
 }
+.StudentName{
+  position:absolute;
+  top: 50px;
+   left: 400px;}

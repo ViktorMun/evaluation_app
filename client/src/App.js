@@ -14,12 +14,13 @@ class App extends Component {
       <Router>
         <div className='App'>
           <NavBar/>
+          <Route exact path="/login" component={LoginPage} />
+          <Route exact path="/logout" component={LogoutPage} />
           <Route exact path="/" component={groups} />
           <Route exact path="/groups" component={groups} />
           <Route exact path="/students/:id" component={students} />
-          <Route exact path="/:id" component={oneStudent} />
-          <Route exact path="/login" component={LoginPage} />
-          <Route exact path="/logout" component={LogoutPage} />
+          <Route exact path="/students/st/:id" component={oneStudent} />
+
         </div>
       </Router>
     )

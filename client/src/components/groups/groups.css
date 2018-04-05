@@ -1,8 +1,10 @@
-.quiz-list {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid grey;
-  font-size: 15px;
+.guiz {
+  margin-left: 40px;
+ margin-top: 40px;
+ height: 250px;
+ width: 300px;
+ display: block! important;
+ float: center! important;
 }
 
 .edit-button {
