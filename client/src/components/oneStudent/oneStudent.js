@@ -1,4 +1,5 @@
 import React, {PureComponent} from 'react'
+import PropTypes from 'prop-types'
 import {getOneStudent, changeStudent, addMark} from '../../actions/actions'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
@@ -7,6 +8,10 @@ import ChangeStudent from './changeStudent'
 import Button from 'material-ui/Button'
 import AddMark from './addMark.js'
 
+export const oneStudentShp = PropTypes.shape({
+    day: PropTypes.array,
+})
+console.log(oneStudentShp)
 class oneStudent extends PureComponent {
   state = {}
 
@@ -62,12 +67,14 @@ class oneStudent extends PureComponent {
           <th>ID</th>
           <th>Date</th>
           <th>Mark</th>
+          <th>Comments</th>
         </tr>
         {
           oneStudent.day && oneStudent.day.map(day => <tr>
-            <td width="5%">{day.id}</td>
-            <td width="30%" className="title">{day.date}</td>
-            <td width="30%" className="title">{day.colour}</td>
+            <td >{day.id}</td>
+            <td className="title">{day.date}</td>
+            <td  className="title">{day.colour}</td>
+            <td  className="title">{day.text}</td>
 
           </tr>)
         }

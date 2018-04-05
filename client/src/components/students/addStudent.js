@@ -1,5 +1,5 @@
 import React, {PureComponent} from 'react'
-import './students.css'
+//import './students.css'
 import Paper from 'material-ui/Paper'
 
 const style = {

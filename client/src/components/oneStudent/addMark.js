@@ -2,6 +2,16 @@ import React, {PureComponent} from 'react'
 import Button from "material-ui/Button";
 import './addMark.css'
 
+const style =
+{
+  height: 200,
+  width: 60,
+  margin: 10,
+  textAlign: 'left',
+
+
+}
+
 class AddMark extends PureComponent {
 	state = {}
 
@@ -23,6 +33,7 @@ class AddMark extends PureComponent {
 		return (
 			<form onSubmit={this.handleSubmit}>
 				<div>
+
 					<input className="radioClick" type="radio"  name="colour" id="colour" value=
 						"red"
 					 onChange={ this.handleChange } />RED

@@ -2,3 +2,9 @@
   opacity: 1;
   position: unset;
 }
+label input[type="radio"]:checked ~ span {
+  color: #78a025;
+}
+label input[type="checkbox"]:checked ~ span {
+  color: #78a025;
+}
