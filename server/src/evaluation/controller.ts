@@ -15,6 +15,7 @@ import {
 import { Teacher, Group, Student, Day } from './entities'
 import { Validate } from 'class-validator'
 import * as request from 'superagent'
+import {progressBar} from './logic'
 
 
 @JsonController()
@@ -33,7 +34,8 @@ export default class evaluationController {
   getGroup(
     @Param('id') groupId: number
   ) {
-    return Group.findOneById(groupId)
+    const group = Group.findOneById(groupId)
+    return group
   }
 
 
@@ -43,9 +45,35 @@ export default class evaluationController {
   async getGroupSt(
     @Param('id') groupId: number
   ) {
-    const group:any = await Group.findOneById(groupId)
+    const group = await Group.findOneById(groupId)
 
+    const x = progressBar(group!)
     return group.student
+
+  }
+
+  @Get('/groups/:id([0-9]+)/progress')
+  @HttpCode(200)
+  async getProgress(
+    @Param('id') groupId: number
+  ) {
+    const group = await Group.findOneById(groupId)
+
+    const x = progressBar(group!)
+    return x
+
+  }
+
+
+  @Get('/groups/:id([0-9]+)/progressBar')
+  @HttpCode(200)
+  async getProgressBar(
+    @Param('id') groupId: number
+  ) {
+    const group = await Group.findOneById(groupId)
+
+    const x=  progressBar(group)
+    return x
 
   }
 
@@ -243,5 +271,14 @@ export default class evaluationController {
     teacher.remove()
     return "teacher succesfully deleted"
   }
+  @Get('/students/group/:id([0-9]+)/random')
+  @HttpCode(200)
+  async getRStudent(
+    @Param('id') groupId: number
+  ) {
+    const group = await Group.findOneById(groupId)
+    return group
 
-}
+  }
+
+  }

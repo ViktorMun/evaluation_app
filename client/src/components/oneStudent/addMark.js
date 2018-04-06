@@ -9,7 +9,6 @@ const style =
   margin: 10,
   textAlign: 'left',
 
-
 }
 
 class AddMark extends PureComponent {
@@ -33,14 +32,14 @@ class AddMark extends PureComponent {
 		return (
 			<form onSubmit={this.handleSubmit}>
 				<div>
-
 					<input className="radioClick" type="radio"  name="colour" id="colour" value=
-						"red"
+						"R"
 					 onChange={ this.handleChange } />RED
           <input className="radioClick" type="radio" name="colour" id="colour" value=
-						"yellow" onChange={ this.handleChange } />YELLOW
+						"Y" onChange={ this.handleChange } />YELLOW
           <input className="radioClick" type="radio"  name="colour" id="colour" value=
-						"green" onChange={ this.handleChange } />GREEN
+						"G" onChange={ this.handleChange } />GREEN
+
 				</div>
 
         <div>

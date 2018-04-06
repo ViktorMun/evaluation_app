@@ -8,10 +8,7 @@ import ChangeStudent from './changeStudent'
 import Button from 'material-ui/Button'
 import AddMark from './addMark.js'
 
-export const oneStudentShp = PropTypes.shape({
-    day: PropTypes.array,
-})
-console.log(oneStudentShp)
+
 class oneStudent extends PureComponent {
   state = {}
 
@@ -42,26 +39,31 @@ class oneStudent extends PureComponent {
   addMark = (mark) => {
     this.props.addMark(this.props.match.params.id, mark)
   }
+  carousel = colour => {
+    if (colour==="R") {return "Red"}
+    else if (colour === "Y") {return "Yellow"}
+    else if (colour === "G" ) {return "Green"}
+  };
 
   render() {
     const initialValues = this.props.initialValues || {}
     const oneStudent = this.props.oneStudent
-    console.log(oneStudent.day)
+
 
     if (!oneStudent)
       return null
 
     return (<div>
+      <div class="card">
+    <img src={oneStudent.picture} className="photo"/>
+    <div class="container">
+      <h2 className='StudentName'><b>{oneStudent.name}</b></h2>
 
-      < ChangeStudent onSubmit={this.changeStudent}/>
-      <div class="img">
-        <img src={oneStudent.picture} style={{
-            width: 200,
-            height: 200
-          }}/>
-        <h2 className='StudentName'>{oneStudent.name}</h2>
-        <div></div>
+          < ChangeStudent onSubmit={this.changeStudent}/>
+          < AddMark onSubmit={this.addMark}/>
       </div>
+      </div>
+
       <table>
         <tr>
           <th>ID</th>
@@ -73,14 +75,15 @@ class oneStudent extends PureComponent {
           oneStudent.day && oneStudent.day.map(day => <tr>
             <td >{day.id}</td>
             <td className="title">{day.date}</td>
-            <td  className="title">{day.colour}</td>
+            <td className={this.carousel(day.colour)}>{day.colour}</td>
             <td  className="title">{day.text}</td>
 
           </tr>)
         }
       </table>
-      < AddMark onSubmit={this.addMark}/>
-    </div>)
+</div>
+
+      )
   }
 }
 const mapStateToProps = function(state) {

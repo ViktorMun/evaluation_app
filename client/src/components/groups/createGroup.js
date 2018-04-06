@@ -1,6 +1,14 @@
 import React, {PureComponent} from 'react'
 // import './groups.css'
 
+
+const style = {
+  height: 100,
+  width: 200,
+  margin: 20,
+  textAlign: 'center',
+};
+
 class AddGroup extends PureComponent {
 	state = {}
 
@@ -20,7 +28,7 @@ class AddGroup extends PureComponent {
 	render() {
 		const initialValues = this.props.initialValues || {}
 		return (
-			<form onSubmit={this.handleSubmit} className="quiz">
+			<form onSubmit={this.handleSubmit} style={style} className="quiz">
 				<div>
 					<label htmlFor="name">Group name</label>
 					<input name="name" id="name" value={

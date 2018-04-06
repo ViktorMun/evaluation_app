@@ -9,6 +9,8 @@ export const ADD_STUDENT   = 'ADD_STUDENT'
 export const DELETE_STUDENT   = 'DELETE_STUDENT'
 export const CHANGE_STUDENT = 'CHANGE_STUDENT'
 export const ADD_MARK = 'ADD_MARK'
+export const GET_PROGRESS = 'GET_PROGRESS'
+
 
 export const getGroups = () => (dispatch, getState) => {console.log("work")
   const state = getState()
@@ -51,9 +53,26 @@ export const getStudents = (id) => (dispatch, getState) => {
         type: GET_STUDENTS,
         payload: result.body
       })
+
     })
     .catch(err => console.error(err))
 }
+
+export const getProgress = (id) => (dispatch, getState) => {
+  const state = getState()
+
+  request
+    .get(`${baseUrl}/groups/${id}/progress`)
+    .then(result => {
+      dispatch({
+        type: GET_PROGRESS,
+        payload: result.body
+      })
+
+    })
+    .catch(err => console.error(err))
+}
+
 
 export const getOneStudent = (id) => (dispatch, getState) => {
   const state = getState()

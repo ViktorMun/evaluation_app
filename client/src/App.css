@@ -1,133 +1,28 @@
-<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
-
-.App{
-  overflow-x: hidden;
-  font: Ubuntu;
-}
-
-.question-list{
-  text-align: left;
-}
-
-.question-form{
+.App {
   text-align: center;
 }
 
-.anwser-amount{
-  position: absolute;
-  display: flex;
-  margin-left: 35%;
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
 }
 
-.anwser-amount-button{
-  padding: 0%;
-  height: 10%;
-  width: 10%;
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
 }
 
-.question-amount-button{
-  position: relative;
-  margin-top: -10%;
-  height: 80%;
-  width: 80%;
+.App-title {
+  font-size: 1.5em;
 }
 
-.question-amount{
-  position: relative;
-  width: 1.5rem;
-  margin-left: 0%;
-  margin-top: -10%;
+.App-intro {
+  font-size: large;
 }
 
-.switch {
-  position: absolute;
-  display: inline-block;
-  margin-top: 0px;
-  margin-left: 1.4%;
-  width: 30px;
-  height: 12px;
-}
-
-.switch input {
-  display:none;
-}
-
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: blue;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 7px;
-  width: 13px;
-  left: 2px;
-  bottom: 2.5px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-
-
-.question-form{
-  width: 90%;
-  text-align: left;
-}
-
-.question-table{
-  width: 70%;
-}
-.quiz-table{
-  width: 85%;
-}
-
-.row{
-  display: flex;
-  text-align: right;
-}
-
-.h5y{
-  position: absolute;
-  margin-left: 4.5%;
-  margin-top: -0.1%;
-}
-
-.quiz-right-fixed{
-  position: fixed;
-  margin-left: 85%;
-  margin-top: 10%;
-  text-align: center;
-}
-
-.quiz-container{
-  display: grid;
-}
-
-.quiz-name{
-  font-size: 20px;
-  height: 2rem;
-  width:40%;
-  text-align: left;
-  margin-top: 0.7rem;
-}
-
-.quiz-name-container{
-  display: flex;
-  text-align: left;
-}
-
-.question-amount-container{
-  padding-left: 10rem;
-}
-body {
-  font-family: Raleway;
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }

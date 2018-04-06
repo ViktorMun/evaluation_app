@@ -3,12 +3,10 @@ import React, {PureComponent} from 'react'
 import Paper from 'material-ui/Paper'
 
 const style = {
-  height: 200,
-  width: 350,
+  height: 100,
+  width: 200,
   margin: 20,
-  textAlign: 'left',
-  display: 'inline-block',
-
+  textAlign: 'center',
 };
 
 class AddStudent extends PureComponent {

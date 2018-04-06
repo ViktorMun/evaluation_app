@@ -11,9 +11,9 @@ class LoginPage extends PureComponent {
 	}
 
 	render() {
-		if (this.props.currentUser) return (
-			<Redirect to="/groups" />
-		)
+
+		if (this.props.currentUser) return <Redirect to="/" />;
+
 
 		return (
 			<div id ="content">

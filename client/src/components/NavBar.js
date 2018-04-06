@@ -1,29 +1,64 @@
-import React, { PureComponent } from "react";
-import { connect } from "react-redux";
-// import { Link } from "react-router-dom";
-import { logout } from "../actions/users";
+import React from 'react'
+import PropTypes from 'prop-types'
+import { withStyles } from 'material-ui/styles'
+import AppBar from 'material-ui/AppBar'
+import Toolbar from 'material-ui/Toolbar'
+import Typography from 'material-ui/Typography'
+import Button from 'material-ui/Button'
+import IconButton from 'material-ui/IconButton'
+import MenuIcon from 'material-ui-icons/Menu'
+import {withRouter} from 'react-router'
 
 
+const styles = {
+  root: {
+    flexGrow: 1,
+  },
+  flex: {
+    flex: 1,
+  },
+  menuButton: {
+    marginLeft: -12,
+    marginRight: 20,
+  },
+};
 
-class NavBar extends PureComponent {
+function ButtonAppBar(props) {
+  const { classes, location, history } = props
 
-  render() {
-    return (
-      <nav>
-        <div class="nav-wrapper red">
-          <a href="/" class="brand-logo"><i class="material-icons"></i>Codaisseur</a>
-          <ul id="nav-mobile" class="right hide-on-med-and-down">
-          </ul>
-        </div>
-      </nav>
-    );
-  }
+  return (
+    <div className={classes.root} >
+      <AppBar position="static" >
+        <Toolbar>
+
+          <Typography variant="title" color="inherit" className={classes.flex}>
+
+        <a href="/groups/" class="brand-logo"><i class="material-icons"></i>Codaisseur</a>
+          </Typography>
+          {
+            location.pathname.indexOf('signup') > 0 &&
+            <Button color="inherit" onClick={() => history.push('/login')}>Login</Button>
+          }
+          {
+            location.pathname.indexOf('login') > 0 &&
+            <Button color="inherit" onClick={() => history.push('/signup')}>Sign up</Button>
+          }
+          {
+            location.pathname.indexOf('games/') > 0 &&
+            <Button color="inherit" onClick={() => history.push('/games')}>All Games</Button>
+          }
+          {
+            /games$/.test(location.pathname) &&
+            <Button color="inherit" onClick={() => history.push('/logout')}>Log out</Button>
+          }
+            </Toolbar>
+      </AppBar>
+    </div>
+  );
 }
 
+ButtonAppBar.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
 
-const mapStateToProps = function (state) {
-	return {
-		currentUser: state.currentUser
-	}
-}
-export default connect(mapStateToProps, { logout })(NavBar);
+export default withRouter(withStyles(styles)(ButtonAppBar));
