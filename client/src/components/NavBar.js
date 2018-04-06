@@ -39,10 +39,7 @@ function ButtonAppBar(props) {
             location.pathname.indexOf('signup') > 0 &&
             <Button color="inherit" onClick={() => history.push('/login')}>Login</Button>
           }
-          {
-            location.pathname.indexOf('login') > 0 &&
-            <Button color="inherit" onClick={() => history.push('/signup')}>Sign up</Button>
-          }
+          
           {
             location.pathname.indexOf('games/') > 0 &&
             <Button color="inherit" onClick={() => history.push('/games')}>All Games</Button>

@@ -1,5 +1,5 @@
 import React, {PureComponent} from 'react'
-import {getStudents, addStudent, deleteStudent, getProgress} from '../../actions/actions'
+import {getStudents, addStudent, deleteStudent, getProgress, getRandom} from '../../actions/actions'
 import {connect} from 'react-redux'
 import './students.css'
 import {Link} from 'react-router-dom'
@@ -21,7 +21,8 @@ class students extends PureComponent {
 
   componentWillMount(props) {
     this.props.getStudents(this.props.match.params.id),
-    this.props.getProgress(this.props.match.params.id)
+    this.props.getProgress(this.props.match.params.id),
+    this.props.getRandom(this.props.match.params.id)
   }
 
   handleSubmit = (e) => {
@@ -56,6 +57,8 @@ class students extends PureComponent {
   render() {
     const students = this.props.students
     const progress = this.props.progress
+    const random = this.props.random
+
     return (<div>
       <h2>All students</h2>
 
@@ -82,23 +85,32 @@ class students extends PureComponent {
 
       < AddStudent onSubmit={this.addStudent}/>
 
+      <div classname="Progress" style={style}>
+        RED:
+        <progress value={progress.r} max="100"></progress>
 
-        <div classname="Progress" style={style}>  RED:{progress.r} YELLOW:{progress.y} GREEN:{progress.g} NULL: {progress.w}
-      <button style={{
-          marginLeft: 10
-        }}>
-        Random student 4 question
-      </button>
+        YELLOW:
+        <progress value={progress.y} max="100"></progress>
+
+        GREEN:
+        <progress value={progress.g} max="100"></progress>
+        NULL:
+        <progress value={progress.w} max="100"></progress>
+
+        <Link to={`/students/st/${random.id}`}>
+          <button>
+            Random student
+          </button>
+        </Link>
+
       </div>
     </div>);
   }
 }
 
 const mapStateToProps = function(state) {
-  return {students: state.students,
-    progress: state.progress
-  }
+  return {students: state.students, progress: state.progress, random: state.random}
 
 }
 
-export default connect(mapStateToProps, {getStudents, addStudent, deleteStudent, getProgress})(students)
+export default connect(mapStateToProps, {getStudents, addStudent, deleteStudent, getProgress, getRandom})(students)

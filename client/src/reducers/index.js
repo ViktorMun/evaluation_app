@@ -4,6 +4,8 @@ import students from './students'
 import oneStudent from './oneStudent'
 import addStudent from './addStudent'
 import progress from './progress'
+import random from './random'
+import currentUser from './currentUser'
 
 export default {
   groups,
@@ -11,5 +13,7 @@ export default {
   login,
   oneStudent,
   addStudent,
-  progress
+  progress,
+  random,
+  currentUser
 }
