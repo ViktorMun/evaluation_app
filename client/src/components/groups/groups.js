@@ -52,7 +52,7 @@ class GroupList extends PureComponent {
         </div>
       )}
       < AddGroup onSubmit={this.addGroup}/>
-    
+
       </div>
 
   )

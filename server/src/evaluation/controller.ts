@@ -15,7 +15,7 @@ import {
 import { Teacher, Group, Student, Day } from './entities'
 import { Validate } from 'class-validator'
 import * as request from 'superagent'
-import {progressBar} from './logic'
+import { progressBar, randomStudent } from './logic'
 
 
 @JsonController()
@@ -25,7 +25,7 @@ export default class evaluationController {
   @Get('/groups')
   @HttpCode(200)
   getGroups() {
-  return Group.find()
+    return Group.find()
   }
 
   //@Authorized()
@@ -39,17 +39,25 @@ export default class evaluationController {
   }
 
 
-// getallStudents by ID
+  // getallStudents by ID
   @Get('/groups/:id([0-9]+)/students')
   @HttpCode(200)
   async getGroupSt(
     @Param('id') groupId: number
   ) {
     const group = await Group.findOneById(groupId)
-
-    const x = progressBar(group!)
     return group.student
 
+  }
+
+  @Get('/groups/:id([0-9]+)/random')
+  @HttpCode(200)
+  async getdSt(
+    @Param('id') groupId: number
+  ) {
+    const group = await Group.findOneById(groupId)
+    const dStudent = randomStudent(group!)
+    return dStudent
   }
 
   @Get('/groups/:id([0-9]+)/progress')
@@ -72,7 +80,7 @@ export default class evaluationController {
   ) {
     const group = await Group.findOneById(groupId)
 
-    const x=  progressBar(group)
+    const x = progressBar(group)
     return x
 
   }
@@ -83,8 +91,8 @@ export default class evaluationController {
     @Param('id') groupId: number,
     @Body() student: Student
   ) {
-    const group:any = await Group.findOneById(groupId)
-    await Student.create ({
+    const group: any = await Group.findOneById(groupId)
+    await Student.create({
       name: student.name,
       picture: student.picture,
       group: group
@@ -101,39 +109,39 @@ export default class evaluationController {
     student: Partial<Student>
   ) {
     const stud = await Student.findOneById(studentId)
-    await Student.merge( stud, student).save()
+    await Student.merge(stud, student).save()
     return "Succesfully changed new student"
 
   }
 
   @Post("/students/:id([0-9]+)/mark")
-   @HttpCode(201)
-   async addMark(
-     @Param('id') id: number,
-     @Body() mark: Day,
+  @HttpCode(201)
+  async addMark(
+    @Param('id') id: number,
+    @Body() mark: Day,
 
-   ) {
+  ) {
     const oneStudent = await Student.findOneById(id)
-    await Day.create({
-      colour:mark.colour,
-      date:mark.date,
-      text:mark.text,
+    let day = await Day.create({
+      colour: mark.colour,
+      date: mark.date,
+      text: mark.text,
       student: oneStudent,
     }).save();
-    return { message:'Successfully inserted mark'}
-}
+    return day
+  }
 
   // getallStudents by ID
-    @Get('/student/:id([0-9]+)')
-    @HttpCode(200)
-    async getStudent(
-      @Param('id') studentId: number
-    ) {
-      const student:any = await Student.findOneById(studentId)
+  @Get('/student/:id([0-9]+)')
+  @HttpCode(200)
+  async getStudent(
+    @Param('id') studentId: number
+  ) {
+    const student: any = await Student.findOneById(studentId)
 
-      return student
+    return student
 
-    }
+  }
 
 
   //
@@ -167,7 +175,10 @@ export default class evaluationController {
         }).save();
       }
     }
+    return entityGroup
   }
+
+
 
   @Authorized()
   @Patch('/groups')
@@ -281,4 +292,4 @@ export default class evaluationController {
 
   }
 
-  }
+}

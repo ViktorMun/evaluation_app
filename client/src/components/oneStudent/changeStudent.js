@@ -39,7 +39,7 @@ class ChangeStudent extends PureComponent {
 } onChange={this.handleChange}/>
       </div>
 
-      <button type="submit">Save</button>
+      <button type="submit" onClick={_=>window.location.reload()}>Save</button>
     </form>
   </Paper>)
   }

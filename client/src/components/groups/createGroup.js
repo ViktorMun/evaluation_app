@@ -51,7 +51,7 @@ class AddGroup extends PureComponent {
 				</div>
 
 
-				<button type="submit">Save</button>
+				<button type="submit" onClick={_=>window.location.reload()}>Save</button>
 			</form>
 		)
 	}

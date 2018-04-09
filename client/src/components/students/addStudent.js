@@ -46,7 +46,7 @@ class AddStudent extends PureComponent {
 				</div>
 
 
-				<button type="submit">Save</button>
+				<button type="submit" onClick={_=>window.location.reload()}>Save</button>
 			</form>
       </Paper>
 		)

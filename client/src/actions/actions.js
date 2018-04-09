@@ -1,5 +1,6 @@
 import * as request from 'superagent'
 import {baseUrl} from '../constants'
+import  history  from '../history'
 
 export const SHOW_GROUPS = 'SHOW_GROUPS'
 export const ADD_GROUP = 'ADD_GROUP'
@@ -35,10 +36,9 @@ export const addGroup = (group) => (dispatch, getState) => {
     .post(`${baseUrl}/groups`)
     .send(group)
     .then(result => {
-      dispatch({
-        type: ADD_GROUP,
-        payload: result.body
-      })
+      dispatch({ type: ADD_GROUP, payload: result.body})
+  
+
     })
     .catch(err => console.error(err))
 }
@@ -110,10 +110,8 @@ export const addStudent = (id, student) => (dispatch, getState) => {
     .post(`${baseUrl}/groups/${id}/students`)
     .send(student)
     .then(result => {
-      dispatch({
-        type: ADD_STUDENT,
-        payload: result.body
-      })
+      dispatch({ type: ADD_STUDENT, payload: result.body})
+
     })
     .catch(err => console.error(err))
 }
